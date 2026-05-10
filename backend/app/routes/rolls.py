@@ -34,8 +34,8 @@ def create_roll(roll: RollCreate, db: Session = Depends(get_db)):
     db.flush()
 
     frames = [
-        Frame(roll_id=new_roll.id, frame_number=1)
-        for i in range(1, roll.exposures  + 1)
+        Frame(roll_id=new_roll.id, frame_number=i)
+        for i in range(1, roll.exposures + 1)
     ]
     db.add_all(frames)
     db.commit()
