@@ -5,8 +5,8 @@ from app.database import engine, Base
 from app.models import roll, frame
 
 app = FastAPI()
-app.include_router(rolls.router)
-app.include_router(frames.router)
+app.include_router(rolls.router, prefix="/rolls")
+app.include_router(frames.router, prefix="/rolls")
 
 
 @app.on_event("startup")
